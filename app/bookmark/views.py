@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, DetailView
+from django.views.generic import ListView, CreateView, DetailView, UpdateView
 
 from .models import Bookmark
 
@@ -23,5 +23,13 @@ class BookmarkCreateView(CreateView):
 
 class BookmarkDetail(DetailView):
     model = Bookmark
+
+
+class BookmarkUpdate(UpdateView):
+    model = Bookmark
+    fields = ['site_name',
+              'url',
+              ]
+    template_name_suffix = '_update'
 
 
