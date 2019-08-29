@@ -7,7 +7,8 @@ from .models import Bookmark
 class BookmarkListView(ListView):
     # html에서 object라는 변수명으로 사용
     model = Bookmark
-
+    # 한 페이지에 나올 개수
+    paginate_by = 6
 
 class BookmarkCreateView(CreateView):
     model = Bookmark
@@ -38,5 +39,6 @@ class BookmarkUpdate(UpdateView):
 class BookmarkDeleteView(DeleteView):
     model = Bookmark
     success_url = reverse_lazy('list')
+
 
 
