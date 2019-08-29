@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, DetailView, UpdateView
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
 from .models import Bookmark
 
@@ -12,7 +12,9 @@ class BookmarkListView(ListView):
 class BookmarkCreateView(CreateView):
     model = Bookmark
     # 입력 받을 필드
-    fields = ['site_name', 'url']
+    fields = ['site_name',
+              'url',
+              ]
     # 글쓰기를 완료하고 이동할 페이지
     # 보통 상세페이지로 이동
     success_url = reverse_lazy('list')
@@ -31,5 +33,10 @@ class BookmarkUpdate(UpdateView):
               'url',
               ]
     template_name_suffix = '_update'
+
+
+class BookmarkDeleteView(DeleteView):
+    model = Bookmark
+    success_url = reverse_lazy('list')
 
 

@@ -13,4 +13,4 @@ class Bookmark(models.Model):
     # 객체의 상세 화면 주소를 반환하게 만듬(detail)
     # reverse메서드는 URL패턴의 이름과 추가 인자를 전달받아 URL을 생성하는 메서드
     def get_absolute_url(self):
-        return reverse('detail', args=[str[self.id]])
+        return reverse('detail', args=[str(self.id)])

@@ -1,25 +1,20 @@
-<!doctype html>
-<html lang="ko-kr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <div class="btn-group">
+{% extends 'base.html' %}
+
+{% block title %} Bookmark list {% endblock %}
+
+{% block content %}
+<div class="btn-group">
         <a href="{% url 'add' %}" class="btn btn-info">Add bookmark</a>
     </div>
     <p></p>
     <table class="table">
         <thead>
             <tr>
-                <th class="col">#</th>
-                <th class="col">Site</th>
-                <th class="col">URL</th>
-                <th class="col">Modify</th>
-                <th class="col">Delete</th>
+                <th scope="col">#</th>
+                <th scope="col">Site</th>
+                <th scope= "col">URL</th>
+                <th scope="col">Modify</th>
+                <th scope="col">Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -28,11 +23,10 @@
                 <td>{{forloop.counter}}</td>
                 <td><a href="{% url 'detail' pk=bookmark.id %}">{{ bookmark.site_name}}</a></td>
                 <td><a href="{{bookmark.url}}" target="_blank">{{bookmark.url}}</a></td>
-                <td><a href="{% url 'update' pk=bookmark.id %}" class="btn btn-danger btn-sm">Modify</a></td>
-                <td><a href="" class="btn btn-danger btn-sm">Delete</a></td>
+                <td><a href="{% url 'update' pk=bookmark.id %}" class="btn btn-success btn-sm">Modify</a></td>
+                <td><a href="{% url 'delete' pk=bookmark.id %}" class="btn btn-danger btn-sm">Delete</a></td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
-</body>
-</html>
+{% endblock %}
